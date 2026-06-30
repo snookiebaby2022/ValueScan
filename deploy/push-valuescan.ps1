@@ -76,7 +76,7 @@ fi
 # nginx (www-data) must read uploaded dist/
 chmod -R a+rX dist
 cd backend
-npm ci --omit=dev
+npm install --omit=dev
 cd ..
 if [ -f deploy/nginx-valuescan.online.conf ]; then
   cp deploy/nginx-valuescan.online.conf /etc/nginx/sites-available/valuescan.online
