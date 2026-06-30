@@ -1,0 +1,10 @@
+<?php
+/**
+ * Copy to valuescan.local.php on the WHMCS server (same folder as valuescan-invoice-paid.php).
+ */
+if (!defined('WHMCS')) {
+    die('This file cannot be accessed directly');
+}
+
+define('VALUESCAN_API_URL', 'https://valuescan.online/api/whmcs/webhook');
+define('VALUESCAN_WEBHOOK_SECRET', 'paste-same-value-as-WHMCS_WEBHOOK_SECRET-in-valuescan-env');

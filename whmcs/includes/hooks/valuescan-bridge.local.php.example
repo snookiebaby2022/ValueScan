@@ -1,0 +1,6 @@
+<?php
+if (!defined('WHMCS')) {
+    die('This file cannot be accessed directly');
+}
+/** Same value as VALUESCAN_BRIDGE_SECRET in /var/www/valuescan/.env */
+define('VALUESCAN_BRIDGE_SECRET', 'paste-random-secret-here');

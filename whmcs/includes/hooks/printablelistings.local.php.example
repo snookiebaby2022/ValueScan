@@ -1,0 +1,11 @@
+<?php
+/**
+ * Copy to printablelistings.local.php on the WHMCS server (same folder as the hook).
+ * Or run: npm run setup:webhook  (generates from marketplace .env)
+ */
+if (!defined('WHMCS')) {
+    die('This file cannot be accessed directly');
+}
+
+define('PRINTABLELISTINGS_API_URL', 'https://printablelistings.xyz/api/whmcs/webhook');
+define('PRINTABLELISTINGS_WEBHOOK_SECRET', 'paste-same-value-as-WHMCS_WEBHOOK_SECRET-in-marketplace-env');

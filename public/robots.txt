@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /seller
+Disallow: /checkout
+Disallow: /basket
+Disallow: /cart
+Disallow: /orders
+Disallow: /saved
+Disallow: /login
+Disallow: /register
+Disallow: /print
+
+Sitemap: https://printablelistings.xyz/sitemap.xml
