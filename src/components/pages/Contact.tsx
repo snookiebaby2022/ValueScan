@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MessageSquare, Send, ChevronDown, HelpCircle, Check, Loader2, MapPin, Twitter, MessageCircle, Clock } from 'lucide-react';
+import { Mail, Send, ChevronDown, HelpCircle, Check, Loader2, Twitter, MessageCircle, Clock } from 'lucide-react';
 
 
-import { API_BASE, authHeaders } from '../../lib/api';
+import { API_BASE } from '../../lib/api';
 import MetaTags from '../layout/MetaTags';
-import { useToast } from '../layout/ToastProvider';
+import { useToast } from '../../hooks/useToast';
 import Breadcrumb from '../layout/Breadcrumb';
 
 const faqs = [

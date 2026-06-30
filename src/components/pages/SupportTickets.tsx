@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import { MessageSquare, Plus, Send, CheckCircle, Clock, AlertCircle, Loader2 } from 'lucide-react';
 import { API_BASE, authHeaders } from '../../lib/api';
 import MetaTags from '../layout/MetaTags';
@@ -28,10 +27,6 @@ export default function SupportTickets() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
-  useEffect(() => {
-    loadTickets();
-  }, []);
-
   const loadTickets = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -43,6 +38,10 @@ export default function SupportTickets() {
     setLoading(false);
   };
 
+  useEffect(() => {
+    loadTickets();
+  }, []);
+
   const submitTicket = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -51,7 +50,6 @@ export default function SupportTickets() {
 
     setSubmitting(true);
     try {
-      const token = localStorage.getItem('token');
       const res = await fetch(`${API_BASE}/api/tickets`, {
         method: 'POST',
         headers: { ...authHeaders(), 'Content-Type': 'application/json' },

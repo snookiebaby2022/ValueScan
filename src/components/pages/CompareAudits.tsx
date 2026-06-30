@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MetaTags from '../layout/MetaTags';
-import { ArrowLeft, ArrowRight, TrendingUp, TrendingDown, Minus, Shield, Zap, Globe, BarChart3, FileX } from 'lucide-react';
-import cn from '../../lib/utils';
-
+import { ArrowRight, TrendingUp, TrendingDown, Minus, Shield, Zap, Globe, BarChart3 } from 'lucide-react';
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4030';
 
 interface AuditSummary {

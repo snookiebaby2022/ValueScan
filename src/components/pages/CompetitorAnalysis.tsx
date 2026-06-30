@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ScanLine, Target, BarChart3, ArrowUp, ArrowDown, Search, Globe, Link2, FileText, Shield, Zap, TrendingUp, Download, ExternalLink, SearchX, AlertTriangle, Loader2 } from 'lucide-react';
+
+import { Target, BarChart3, Search, Globe, Link2, FileText, Shield, Zap, TrendingUp, Download, SearchX, AlertTriangle, Loader2 } from 'lucide-react';
 import cn from '../../lib/utils';
 import MetaTags from '../layout/MetaTags';
-import Breadcrumb from '../layout/Breadcrumb';
 import { API_BASE, authHeaders } from '../../lib/api';
 
 interface Competitor {
@@ -110,8 +109,6 @@ export default function CompetitorAnalysis() {
       ]
     : [];
 
-  const yourSite = displayData[0];
-  const others = displayData.slice(1);
   const maxVal = displayData.length > 0 ? Math.max(...displayData.map((c) => (c[activeMetric as keyof Competitor] as number))) : 0;
 
   return (

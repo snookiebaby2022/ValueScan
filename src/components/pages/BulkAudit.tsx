@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { SkeletonAuditReport } from '../layout/Skeleton';
 import MetaTags from '../layout/MetaTags';
-import { FileText, Plus, Trash2, ScanLine, ArrowRight, Loader2, CheckCircle, AlertTriangle, ExternalLink, X } from 'lucide-react';
+import { FileText, Plus, Trash2, ScanLine, Loader2, CheckCircle, ExternalLink } from 'lucide-react';
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4030';
 
@@ -20,7 +19,6 @@ export default function BulkAudit() {
   const [urls, setUrls] = useState<string[]>(['']);
   const [results, setResults] = useState<BulkResult[]>([]);
   const [running, setRunning] = useState(false);
-  const [progress, setProgress] = useState(0);
   const token = localStorage.getItem('token');
 
   const addUrl = () => {
@@ -42,7 +40,6 @@ export default function BulkAudit() {
 
     setRunning(true);
     setResults(validUrls.map(u => ({ url: u, score: 0, issues: 0, warnings: 0, loading: true })));
-    setProgress(0);
 
     try {
       const res = await fetch(`${API_BASE}/api/audit/bulk`, {
@@ -66,7 +63,6 @@ export default function BulkAudit() {
       setResults(validUrls.map(u => ({ url: u, score: 0, issues: 0, warnings: 0, error: 'Network error' })));
     }
     setRunning(false);
-    setProgress(100);
   };
 
   const scoreColor = (s: number) => s >= 80 ? 'text-green-500' : s >= 50 ? 'text-amber-500' : 'text-red-500';

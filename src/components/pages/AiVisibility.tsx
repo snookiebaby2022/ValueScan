@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ScanLine, Brain, Zap, MessageSquare, Bot, TrendingUp, ArrowUp, ArrowDown, Globe, Search, CheckCircle, XCircle, AlertCircle, Download, Sparkles, Eye, SearchX, AlertTriangle, Loader2 } from 'lucide-react';
+import { Brain, TrendingUp, ArrowUp, ArrowDown, CheckCircle, Download, Eye, SearchX, AlertTriangle, Loader2 } from 'lucide-react';
 import cn from '../../lib/utils';
 import MetaTags from '../layout/MetaTags';
-import Breadcrumb from '../layout/Breadcrumb';
 import { API_BASE, authHeaders } from '../../lib/api';
 
 interface AiMention {

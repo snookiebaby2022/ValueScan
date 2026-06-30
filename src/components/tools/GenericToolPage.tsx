@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ScanLine, Search, Loader2, CheckCircle, AlertTriangle, ArrowRight, Zap } from 'lucide-react';
+import { Search, Loader2, CheckCircle, AlertTriangle, ArrowRight, Zap } from 'lucide-react';
 import type { ToolItem } from '../../lib/tools-catalog';
 
 type GenericToolPageProps = {

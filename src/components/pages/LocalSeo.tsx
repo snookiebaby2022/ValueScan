@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ScanLine, MapPin, Search, Star, Phone, Globe, Clock, AlertCircle, CheckCircle, XCircle, Zap, Download, ExternalLink, SearchX, AlertTriangle, Loader2 } from 'lucide-react';
-import cn from '../../lib/utils';
+import { MapPin, Star, Phone, Globe, Clock, CheckCircle, XCircle, Download, SearchX, AlertTriangle, Loader2 } from 'lucide-react';
 import MetaTags from '../layout/MetaTags';
-import Breadcrumb from '../layout/Breadcrumb';
 import { API_BASE, authHeaders } from '../../lib/api';
 
 export default function LocalSeo() {

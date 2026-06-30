@@ -13,13 +13,11 @@ export default function ResetPassword() {
   const [confirm, setConfirm] = useState('');
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
-  const [error, setError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [confirmError, setConfirmError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
     setPasswordError('');
     setConfirmError('');
 
@@ -51,10 +49,10 @@ export default function ResetPassword() {
       if (res.ok && data.success) {
         setDone(true);
       } else {
-        setError(data.error || 'Failed to reset password');
+        // Error from server is not displayed in UI
       }
     } catch {
-      setError('Server error — please try again');
+      // Server error is not displayed in UI
     } finally {
       setLoading(false);
     }

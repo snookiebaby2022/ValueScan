@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import { Bell, BellRing, X, AlertTriangle, CheckCircle } from 'lucide-react';
-import cn from '../../lib/utils';
 
 interface Alert {
   id: number;
@@ -17,7 +16,6 @@ export default function NotificationBell() {
   const [error, setError] = useState('');
   const bellRef = useRef<HTMLDivElement>(null);
   const token = localStorage.getItem('token');
-  const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4030';
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -31,6 +29,7 @@ export default function NotificationBell() {
 
   useEffect(() => {
     if (!token || !open) return;
+    const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4030';
     setLoading(true);
     fetch(`${API_BASE}/api/alerts`, { headers: { Authorization: `Bearer ${token}` } })
       .then(r => r.json())

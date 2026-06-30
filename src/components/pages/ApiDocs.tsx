@@ -1,9 +1,8 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ScanLine, Copy, Check, Code2, Terminal, Lock, Globe, Server, Key, Play, X } from 'lucide-react';
+import { Copy, Check, Code2, Terminal, Lock, Globe, Server, Key, Play, X } from 'lucide-react';
 import { useState } from 'react';
 import MetaTags from '../layout/MetaTags';
-import Breadcrumb from '../layout/Breadcrumb';
 
 const endpoints = [
   { category: 'Audit', method: 'POST', path: '/api/audit', desc: 'Run a full website audit on any URL.', params: [{ name: 'url', type: 'string', required: true, desc: 'The website URL to audit' }], response: `{\n  "score": 87,\n  "issues": 12,\n  "warnings": 8,\n  "recommendations": [...],\n  "reportId": "123"\n}` },

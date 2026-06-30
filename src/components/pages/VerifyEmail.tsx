@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Check, XCircle, Loader2, Mail, ArrowLeft, RefreshCw, ScanLine } from 'lucide-react';
 import { API_BASE } from '../../lib/api';
@@ -13,7 +13,7 @@ export default function VerifyEmail() {
   const [resending, setResending] = useState(false);
   const [resendMessage, setResendMessage] = useState('');
 
-  const verifyToken = async () => {
+  const verifyToken = useCallback(async () => {
     if (!token) { setStatus('error'); setMessage('No verification token found in URL.'); return; }
     setStatus('loading');
     try {
@@ -26,7 +26,7 @@ export default function VerifyEmail() {
       if (data.success) { setStatus('success'); setMessage('Your email has been verified successfully!'); }
       else { setStatus('error'); setMessage(data.error || 'Invalid or expired verification token.'); }
     } catch { setStatus('error'); setMessage('Network error. Please try again.'); }
-  };
+  }, [token]);
 
   const resendVerification = async () => {
     const authToken = localStorage.getItem('token');
@@ -45,7 +45,7 @@ export default function VerifyEmail() {
   };
 
   // Auto-verify if token is present
-  useEffect(() => { if (token && status === 'idle') verifyToken(); }, [token]);
+  useEffect(() => { if (token && status === 'idle') verifyToken(); }, [token, status, verifyToken]);
 
   return (
     <div className="min-h-screen bg-background flex flex-col">

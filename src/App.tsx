@@ -28,7 +28,6 @@ const Dashboard = lazy(() => import('./components/pages/Dashboard'));
 const AdminPanel = lazy(() => import('./components/pages/AdminPanel'));
 const ApiDocs = lazy(() => import('./components/pages/ApiDocs'));
 const SkillsPage = lazy(() => import('./components/pages/SkillsPage'));
-const KeywordResearch = lazy(() => import('./components/pages/KeywordResearch'));
 const RankTracker = lazy(() => import('./components/pages/RankTracker'));
 const Backlinks = lazy(() => import('./components/pages/Backlinks'));
 const AiVisibility = lazy(() => import('./components/pages/AiVisibility'));
@@ -70,7 +69,6 @@ function gated<T extends PlanFeature>(feature: T, Component: ComponentType, titl
   };
 }
 
-const GatedKeywords = gated('keywordResearch', KeywordResearch, 'Keyword Research');
 const GatedRankTracker = gated('rankTracker', RankTracker, 'Rank Tracker');
 const GatedBacklinks = gated('backlinks', Backlinks, 'Backlink Analyzer');
 const GatedAiVisibility = gated('aiVisibility', AiVisibility, 'AI Visibility');

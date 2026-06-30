@@ -4,7 +4,7 @@ import { ScanLine, ArrowRight, Eye, EyeOff, Loader2, CreditCard } from 'lucide-r
 import { Link, useSearchParams } from 'react-router-dom';
 import { PLAN_PRICES, PLAN_SUMMARIES, type PlanId } from '../../lib/plans';
 import MetaTags from '../layout/MetaTags';
-import { useToast } from '../layout/ToastProvider';
+import { useToast } from '../../hooks/useToast';
 
 function getPasswordStrength(password: string): { score: number; label: 'Weak' | 'Fair' | 'Good' | 'Strong' | 'Excellent'; color: string; bg: string } {
   let score = 0;

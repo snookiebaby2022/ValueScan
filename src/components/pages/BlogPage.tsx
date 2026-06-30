@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, Clock, ScanLine, ArrowRight, Search } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useInView } from '../../hooks/useInView';
 import cn from '../../lib/utils';
-import Breadcrumb from '../layout/Breadcrumb';
 
 const articles = [
   { slug: 'core-web-vitals', title: 'How to Fix Core Web Vitals in 2026', excerpt: 'Pass all three CWV metrics without sacrificing design.', date: 'Jun 18, 2026', readTime: '8 min', tag: 'Performance', gradient: 'from-orange-500/20 to-red-500/20' },

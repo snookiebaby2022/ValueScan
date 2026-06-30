@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ScanLine, Search, Link2, ExternalLink, ArrowUp, ArrowDown, Globe, Shield, Download, Zap, SearchX, AlertTriangle, Loader2 } from 'lucide-react';
 import cn from '../../lib/utils';
+import { Link2, ExternalLink, Globe, Download, SearchX, AlertTriangle, Loader2 } from 'lucide-react';
 import MetaTags from '../layout/MetaTags';
-import Breadcrumb from '../layout/Breadcrumb';
 import { API_BASE, authHeaders } from '../../lib/api';
 
 interface Backlink {

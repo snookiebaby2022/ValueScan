@@ -33,7 +33,6 @@ import {
   Key,
   Target,
   Compass,
-  Loader2,
   ScanLine,
 } from "lucide-react";
 import { useInView } from "../../hooks/useInView";
@@ -623,7 +622,6 @@ export default function Dashboard() {
                             ? Math.round(auditHistory.reduce((sum, a) => sum + (a.score || a.totalScore || 0), 0) / totalAudits)
                             : 0;
                           const latestScore = totalAudits > 0 ? (auditHistory[0]?.score || auditHistory[0]?.totalScore || 0) : 0;
-                          const planLabel = quota?.plan ? ({ free: 'Free', pro: 'Pro', max: 'Max' }[String(quota.plan).toLowerCase()] || 'Free') : '-';
                           const auditUsed = quota?.used?.audits || 0;
                           const auditLimit = quota?.limits?.audits;
 

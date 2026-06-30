@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Bell, Plus, Trash2, Globe, AlertTriangle, Check, Loader2, ArrowRight, Shield } from 'lucide-react';
+import { Bell, Plus, Trash2, Globe, AlertTriangle, Check, Loader2, Shield } from 'lucide-react';
 
 
-import { API_BASE, authHeaders } from '../../lib/api';
+import { API_BASE } from '../../lib/api';
 import MetaTags from '../layout/MetaTags';
 
 interface Alert {
@@ -25,18 +25,18 @@ export default function ChangeAlerts() {
   const [error, setError] = useState('');
   const token = localStorage.getItem('token');
 
-  const fetchAlerts = () => {
+  const fetchAlerts = useCallback(() => {
     if (!token) return;
     fetch(`${API_BASE}/api/alerts`, { headers: { Authorization: `Bearer ${token}` } })
       .then(r => r.json())
       .then(data => { if (Array.isArray(data)) setAlerts(data); setLoading(false); })
       .catch(() => { setLoading(false); });
-  };
+  }, [token]);
 
   useEffect(() => {
     if (!token) { navigate('/login'); return; }
     fetchAlerts();
-  }, [token, navigate]);
+  }, [token, navigate, fetchAlerts]);
 
   const handleAdd = async () => {
     if (!newUrl) { setError('URL is required'); return; }

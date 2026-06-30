@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link, useParams } from 'react-router-dom';
-import { Calendar, Clock, ArrowLeft, ScanLine, Twitter, Linkedin, Share2 } from 'lucide-react';
+import { Calendar, Clock, ArrowLeft, Twitter, Linkedin, Share2 } from 'lucide-react';
 import { useInView } from '../../hooks/useInView';
-import Breadcrumb from '../layout/Breadcrumb';
 
 const blogPosts: Record<string, {
   title: string; date: string; readTime: string; tag: string;

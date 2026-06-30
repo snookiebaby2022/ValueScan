@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
-  ScanLine, Users, BarChart3, Shield, Activity, CreditCard, Settings,
-  Search, Mail, FileSearch, TrendingUp, Server, ExternalLink, RefreshCw, Link2,
+  Users, BarChart3, Shield, Activity, CreditCard, Settings,
+  Search, Mail, FileSearch, TrendingUp, Server, ExternalLink, Link2,
 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useInView } from '../../hooks/useInView';

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ScanLine, ArrowRight, X, ExternalLink, GitBranch, FileText, Zap, Layers, Puzzle, Smartphone, MousePointer, Users, Compass, Megaphone, DollarSign, Mail, Share2, Video, Image, TrendingUp, Lightbulb, BarChart2, Award, Globe, Briefcase, Target, Search, Brain, ChevronDown, ChevronUp } from 'lucide-react';
+import { ArrowRight, X, ExternalLink, GitBranch, FileText, Zap, Layers, Puzzle, Smartphone, MousePointer, Users, Compass, Megaphone, DollarSign, Mail, Share2, Video, Image, TrendingUp, Lightbulb, BarChart2, Award, Globe, Briefcase, Target, Search, Brain, ChevronDown, ChevronUp } from 'lucide-react';
 import { useInView } from '../../hooks/useInView';
 import cn from '../../lib/utils';
 import MetaTags from '../layout/MetaTags';

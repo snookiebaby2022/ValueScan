@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ScanLine, Search, Target, ArrowRight, XCircle, CheckCircle, AlertTriangle, Zap, Download, Globe, Compass, SearchX, Loader2 } from 'lucide-react';
+import { Target, AlertTriangle, Download, Globe, Compass, SearchX, Loader2 } from 'lucide-react';
 import cn from '../../lib/utils';
 import MetaTags from '../layout/MetaTags';
-import Breadcrumb from '../layout/Breadcrumb';
 import { API_BASE, authHeaders } from '../../lib/api';
 
 interface Gap {

@@ -38,7 +38,6 @@ export default function AuditScan() {
   const [progress, setProgress] = useState(0);
   const [stepIndex, setStepIndex] = useState(0);
   const [error, setError] = useState('');
-  const [funIndex, setFunIndex] = useState(0);
   const [cancelled, setCancelled] = useState(false);
   const [finished, setFinished] = useState(false);
   const started = useRef(false);
@@ -185,7 +184,7 @@ export default function AuditScan() {
                     </div>
                   </div>
                   <p className="text-sm font-medium text-foreground mb-1">
-                    {FUN_MESSAGES[funIndex]}
+                    {FUN_MESSAGES[0]}
                   </p>
                   <p className="text-xs text-muted-foreground mb-1">
                     {Math.round(progress)}% complete

@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Check, X, Sparkles, ScanLine, Loader2 } from 'lucide-react';
+import { Check, X, Sparkles, Loader2 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import cn from '../../lib/utils';
 import { annualMonthlyPrice, formatPrice, PLAN_PRICES, type PlanId } from '../../lib/plans';
 import MetaTags from '../layout/MetaTags';
-import Breadcrumb from '../layout/Breadcrumb';
 import { API_BASE } from '../../lib/api';
 
 const plans: {

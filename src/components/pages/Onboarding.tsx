@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Globe, Shield, Zap, BarChart3, ArrowRight, Check, Sparkles } from 'lucide-react';
+import { Search, Globe, Shield, BarChart3, ArrowRight, Check, Sparkles } from 'lucide-react';
 import MetaTags from '../layout/MetaTags';
 
 export default function Onboarding() {

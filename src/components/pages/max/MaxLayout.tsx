@@ -1,5 +1,5 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { ScanLine, Key, Users, Palette, Webhook } from 'lucide-react';
+import { Key, Users, Palette, Webhook } from 'lucide-react';
 import cn from '../../../lib/utils';
 
 const NAV = [

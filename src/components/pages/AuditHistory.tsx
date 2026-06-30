@@ -23,9 +23,9 @@ export default function AuditHistory() {
   const [sortKey, setSortKey] = useState<keyof AuditRecord>('created_at');
   const [sortDir, setSortDir] = useState<'asc' | 'desc'>('desc');
   const [limit, setLimit] = useState(10);
-  const token = localStorage.getItem('token');
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
     if (!token) { navigate('/login'); return; }
     fetch(`${API_BASE}/api/audit/history`, { headers: authHeaders() })
       .then(r => r.json())
@@ -35,7 +35,7 @@ export default function AuditHistory() {
         setLoading(false);
       })
       .catch(() => { setError('Network error'); setLoading(false); });
-  }, [token, navigate]);
+  }, [navigate]);
 
   const filtered = audits.filter(a => a.url.toLowerCase().includes(search.toLowerCase()));
 
@@ -93,7 +93,6 @@ export default function AuditHistory() {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => {
-                  const token = localStorage.getItem('token');
                   window.open(`${API_BASE}/api/audit/history/export/csv`, '_blank');
                 }}
                 className="px-4 py-2 border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg font-medium transition-colors flex items-center gap-2"

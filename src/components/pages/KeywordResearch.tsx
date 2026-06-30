@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ScanLine, Search, TrendingUp, DollarSign, BarChart3, ArrowRight, Filter, Zap, Target, ChevronDown, ChevronUp, Copy, Check, Download, Key, SearchX, AlertTriangle, Loader2 } from 'lucide-react';
+import { Target, ChevronDown, ChevronUp, Copy, Check, Download, Key, Search, SearchX, AlertTriangle, Loader2 } from 'lucide-react';
 import cn from '../../lib/utils';
 import { API_BASE, authHeaders } from '../../lib/api';
 import MetaTags from '../layout/MetaTags';
-import Breadcrumb from '../layout/Breadcrumb';
 
 interface KeywordResult {
   keyword: string;
@@ -102,8 +100,6 @@ export default function KeywordResearch() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-
-  const maxVol = results.length > 0 ? Math.max(...results.map(k => k.volume)) : 1;
 
   return (
 

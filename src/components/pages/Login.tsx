@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { ScanLine, ArrowRight, Eye, EyeOff, Loader2 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import MetaTags from '../layout/MetaTags';
-import { useToast } from '../layout/ToastProvider';
+import { useToast } from '../../hooks/useToast';
 
 export default function Login() {
   const [showPass, setShowPass] = useState(false);

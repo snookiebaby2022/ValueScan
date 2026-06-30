@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ScanLine, Search, ArrowUp, ArrowDown, TrendingUp, Minus, Calendar, Filter, Download, Plus, Trash2, Target, SearchX, AlertTriangle, Loader2 } from 'lucide-react';
+import { ArrowUp, ArrowDown, Minus, Filter, Download, Plus, Trash2, Target, SearchX, AlertTriangle, Loader2 } from 'lucide-react';
 import cn from '../../lib/utils';
 import { API_BASE, authHeaders } from '../../lib/api';
 import MetaTags from '../layout/MetaTags';
-import Breadcrumb from '../layout/Breadcrumb';
 
 interface TrackedKeyword {
   id: number;

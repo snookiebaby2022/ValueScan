@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { ScanLine, ArrowRight, Mail, Loader2, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import MetaTags from '../layout/MetaTags';
-import { useToast } from '../layout/ToastProvider';
+import { useToast } from '../../hooks/useToast';
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState('');

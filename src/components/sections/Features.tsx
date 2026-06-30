@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import {
   Search, TrendingUp, Shield, Gauge, FileText, BarChart3,
-  Bell, Users, Cpu, Link2, Sparkles, MapPin, Target, Zap, Key, Compass, Eye, ArrowRight
+  Bell, Users, Cpu, Link2, MapPin, Target, Key, Compass, Eye, ArrowRight
 } from 'lucide-react';
 import { useInView } from '../../hooks/useInView';
 import cn from '../../lib/utils';
