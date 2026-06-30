@@ -13,11 +13,19 @@ param(
   [switch]$SeedAdmin,
   [string]$Host_ = "85.17.162.54",
   [string]$User = "root",
-  [string]$Remote = "/var/www/valuescan"
+  [string]$Remote = "/var/www/valuescan",
+  [string]$Key = ""
 )
 
 $ErrorActionPreference = "Stop"
 $Local = (Resolve-Path "$PSScriptRoot\..").Path
+
+$sshArgs = "-o StrictHostKeyChecking=no -o IdentitiesOnly=yes"
+$scpArgs = "-o StrictHostKeyChecking=no -o IdentitiesOnly=yes"
+if ($Key) {
+  $sshArgs += " -i `"$Key`""
+  $scpArgs += " -i `"$Key`""
+}
 
 Write-Host "=== ValueScan deploy ===" -ForegroundColor Cyan
 Write-Host "Local:  $Local"
@@ -43,23 +51,24 @@ if ((Select-String -Path $distIndex -Pattern 'src="/assets/' -Quiet) -eq $false)
 # ── 2. Upload deployable artifacts only ─────────────────────────
 Write-Host ""
 Write-Host "Uploading to VPS..." -ForegroundColor Yellow
-ssh "${User}@${Host_}" "mkdir -p $Remote/backend $Remote/dist $Remote/public $Remote/deploy"
+Invoke-Expression "ssh $sshArgs `${User}@${Host_} `"mkdir -p $Remote/backend $Remote/dist $Remote/public $Remote/deploy`""
 
 $dirs = @("dist", "backend", "public", "deploy")
 foreach ($d in $dirs) {
   $path = Join-Path $Local $d
   if (-not (Test-Path $path)) { Write-Warning "Skip missing: $d"; continue }
   Write-Host "  -> $d/"
-  scp -r $path "${User}@${Host_}:${Remote}/"
+  Invoke-Expression "scp $scpArgs -r $path `${User}@${Host_}:${Remote}/"
 }
 
 # ── 3. Install API deps + restart ───────────────────────────────
 Write-Host ""
 Write-Host "Installing backend deps and restarting PM2..." -ForegroundColor Yellow
 
-$remoteScript = @"
+$remoteScriptPath = Join-Path $env:TEMP "valuescan-deploy-remote.sh"
+$remoteScript = @'
 set -e
-cd $Remote
+cd __REMOTE__
 if [ ! -f .env ]; then
   cp deploy/valuescan.env.example .env
   echo 'WARNING: Created .env from example — set JWT_SECRET and VALUESCAN_ADMIN_PASSWORD!'
@@ -89,18 +98,23 @@ curl -s -H 'Host: valuescan.online' http://127.0.0.1/admin-login | grep -o 'src=
 echo ''
 echo '--- pm2 ---'
 pm2 describe valuescan | grep -E 'status|script path|cwd' || true
-"@
+'@
 
 if ($SeedAdmin) {
-  $remoteScript += @"
+  $remoteScript += @'
 
 echo ''
 echo '--- seed admin ---'
-cd $Remote/backend && node seed.js
-"@
+cd __REMOTE__/backend && node seed.js
+'@
 }
 
-ssh "${User}@${Host_}" $remoteScript
+$remoteScript = $remoteScript.Replace('__REMOTE__', $Remote)
+Set-Content -Path $remoteScriptPath -Value $remoteScript -NoNewline
+
+Invoke-Expression "scp $scpArgs `"$remoteScriptPath`" `${User}@${Host_}:${Remote}/.deploy-remote.sh"
+Invoke-Expression "ssh $sshArgs `${User}@${Host_} 'bash ${Remote}/.deploy-remote.sh && rm ${Remote}/.deploy-remote.sh'"
+Remove-Item $remoteScriptPath
 
 Write-Host ""
 Write-Host "Done. https://valuescan.online" -ForegroundColor Green
